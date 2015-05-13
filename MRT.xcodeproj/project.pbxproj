@@ -13,6 +13,8 @@
 		B134C7D21B03368800F68978 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B134C7D11B03368800F68978 /* Images.xcassets */; };
 		B134C7D51B03368800F68978 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B134C7D31B03368800F68978 /* LaunchScreen.xib */; };
 		B134C7E11B03368800F68978 /* MRTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B134C7E01B03368800F68978 /* MRTTests.swift */; };
+		B134C7EC1B033FB000F68978 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B134C7EA1B033FB000F68978 /* SwiftyJSON.swift */; };
+		B134C7ED1B033FB000F68978 /* URLConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B134C7EB1B033FB000F68978 /* URLConnection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		B134C7DA1B03368800F68978 /* MRTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MRTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B134C7DF1B03368800F68978 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B134C7E01B03368800F68978 /* MRTTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRTTests.swift; sourceTree = "<group>"; };
+		B134C7EA1B033FB000F68978 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		B134C7EB1B033FB000F68978 /* URLConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConnection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,8 @@
 		B134C7C71B03368800F68978 /* MRT */ = {
 			isa = PBXGroup;
 			children = (
+				B134C7EA1B033FB000F68978 /* SwiftyJSON.swift */,
+				B134C7EB1B033FB000F68978 /* URLConnection.swift */,
 				B134C7CA1B03368800F68978 /* AppDelegate.swift */,
 				B134C7CC1B03368800F68978 /* ViewController.swift */,
 				B134C7CE1B03368800F68978 /* Main.storyboard */,
@@ -212,6 +218,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B134C7EC1B033FB000F68978 /* SwiftyJSON.swift in Sources */,
+				B134C7ED1B033FB000F68978 /* URLConnection.swift in Sources */,
 				B134C7CD1B03368800F68978 /* ViewController.swift in Sources */,
 				B134C7CB1B03368800F68978 /* AppDelegate.swift in Sources */,
 			);
@@ -409,6 +417,7 @@
 				B134C7E61B03368800F68978 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B134C7E71B03368800F68978 /* Build configuration list for PBXNativeTarget "MRTTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +426,7 @@
 				B134C7E91B03368800F68978 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

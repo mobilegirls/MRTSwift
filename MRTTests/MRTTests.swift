@@ -2,8 +2,8 @@
 //  MRTTests.swift
 //  MRTTests
 //
-//  Created by Inflames on 2015/5/13.
-//  Copyright (c) 2015年 Inflames. All rights reserved.
+//  Created by evan3rd on 2015/5/13.
+//  Copyright (c) 2015年 evan3rd. All rights reserved.
 //
 
 import UIKit
