@@ -15,6 +15,8 @@
 		B134C7E11B03368800F68978 /* MRTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B134C7E01B03368800F68978 /* MRTTests.swift */; };
 		B134C7EC1B033FB000F68978 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B134C7EA1B033FB000F68978 /* SwiftyJSON.swift */; };
 		B134C7ED1B033FB000F68978 /* URLConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B134C7EB1B033FB000F68978 /* URLConnection.swift */; };
+		B134C7EF1B044F9B00F68978 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = B134C7EE1B044F9B00F68978 /* Station.swift */; };
+		B134C7F11B046D2300F68978 /* DepartureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B134C7F01B046D2300F68978 /* DepartureManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		B134C7E01B03368800F68978 /* MRTTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRTTests.swift; sourceTree = "<group>"; };
 		B134C7EA1B033FB000F68978 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		B134C7EB1B033FB000F68978 /* URLConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConnection.swift; sourceTree = "<group>"; };
+		B134C7EE1B044F9B00F68978 /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		B134C7F01B046D2300F68978 /* DepartureManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,8 @@
 				B134C7EB1B033FB000F68978 /* URLConnection.swift */,
 				B134C7CA1B03368800F68978 /* AppDelegate.swift */,
 				B134C7CC1B03368800F68978 /* ViewController.swift */,
+				B134C7EE1B044F9B00F68978 /* Station.swift */,
+				B134C7F01B046D2300F68978 /* DepartureManager.swift */,
 				B134C7CE1B03368800F68978 /* Main.storyboard */,
 				B134C7D11B03368800F68978 /* Images.xcassets */,
 				B134C7D31B03368800F68978 /* LaunchScreen.xib */,
@@ -219,6 +225,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B134C7EC1B033FB000F68978 /* SwiftyJSON.swift in Sources */,
+				B134C7EF1B044F9B00F68978 /* Station.swift in Sources */,
+				B134C7F11B046D2300F68978 /* DepartureManager.swift in Sources */,
 				B134C7ED1B033FB000F68978 /* URLConnection.swift in Sources */,
 				B134C7CD1B03368800F68978 /* ViewController.swift in Sources */,
 				B134C7CB1B03368800F68978 /* AppDelegate.swift in Sources */,
