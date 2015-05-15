@@ -16,6 +16,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
+    
+    DepartureManager.sharedInstance.syncStationData(completionBlock: { () -> Void in
+      DepartureManager.sharedInstance.syncMRTDepartureTime(completionBlock: { () -> Void in
+        println("==========")
+        for var i = 0; i < DepartureManager.sharedInstance.stations.count; ++i {
+          var st = DepartureManager.sharedInstance.stations[i]
+          println("\(st.cname) \(st.code)")
+          
+          for p:Platform in st.redLine {
+            println("\(p.destination) \(p.arrivalTime) \(p.nextArrivalTime)")
+          }
+          
+          for p:Platform in st.orangeLine {
+            println("\(p.destination) \(p.arrivalTime) \(p.nextArrivalTime)")
+          }
+          println("==========")
+        }
+      }, errorBlock: nil)
+    }, errorBlock: nil)
+    
     return true
   }
 
