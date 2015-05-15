@@ -96,15 +96,31 @@ class DepartureManager {
           }
           
           if station.code.toInt() < 200 {
-            station.redLine.append(p)
+            if station.redLine.count > 1 {
+              station.redLine[index.toInt()!] = p
+            } else {
+              station.redLine.append(p)
+            }
           } else if station.code.toInt() < 999 {
-            station.orangeLine.append(p)
+            if station.orangeLine.count > 1 {
+              station.orangeLine[index.toInt()!] = p
+            } else {
+              station.orangeLine.append(p)
+            }
           } else {
             switch index {
             case "0", "1" :
-              station.orangeLine.append(p)
+              if station.orangeLine.count > 1 {
+                station.orangeLine[index.toInt()!] = p
+              } else {
+                station.orangeLine.append(p)
+              }
             case "2", "3" :
-              station.redLine.append(p)
+              if station.redLine.count > 1 {
+                station.redLine[index.toInt()! - 2] = p
+              } else {
+                station.redLine.append(p)
+              }
             default: ()
             }
           }
