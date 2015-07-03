@@ -21,17 +21,17 @@ class DepartureManager {
   var _errorBlock: ((error: NSError) -> Void)?
   
   func syncStationData(completionBlock completion:(() -> Void)?, errorBlock: ((error: NSError) -> Void)?) {
-    let urlPath: String = "http://data.kaohsiung.gov.tw/Opendata/DownLoad.aspx?Type=2&CaseNo1=AP&CaseNo2=17&FileType=2&Lang=C&FolderType=O"
-    var url: NSURL = NSURL(string: urlPath)!
-    var request: NSURLRequest = NSURLRequest(URL: url)
+    let urlPath = "http://data.kaohsiung.gov.tw/Opendata/DownLoad.aspx?Type=2&CaseNo1=AP&CaseNo2=17&FileType=2&Lang=C&FolderType=O"
+    let url = NSURL(string: urlPath)!
+    let request = NSURLRequest(URL: url)
     
-    URLConnection.asyncConnection(request, completionBlock: { (data, response) -> Void in
+    URLConnection.sharedInstance.asyncConnectionWithRequest(request, completion: { (data, response) -> Void in
       //let s = NSString(data: data, encoding: NSUTF8StringEncoding)
-      //println(s)
+      //print(s)
 
       let json = JSON(data: data)
       
-      for (index: String, subJson: JSON) in json {
+      for (_, subJson): (String, JSON) in json {
         let st = Station()
 
         if let mrtId = subJson["ODMRT_MrtId"].string {
@@ -58,7 +58,7 @@ class DepartureManager {
       }
       
     }) { (error) -> Void in
-      println(error)
+      print(error)
       if let block = errorBlock {
         block(error: error)
       }
@@ -67,22 +67,22 @@ class DepartureManager {
   
   func syncDepartureTime(station: Station, completionBlock completion:(() -> Void)?, errorBlock: ((error: NSError) -> Void)?) {
     let urlPath: String = String(format: "http://data.kaohsiung.gov.tw/Opendata/MrtJsonGet.aspx?site=%@", station.code)
-    var url: NSURL = NSURL(string: urlPath)!
-    var request: NSURLRequest = NSURLRequest(URL: url)
-    URLConnection.asyncConnection(request, completionBlock: { (data, response) -> Void in
+    let url: NSURL = NSURL(string: urlPath)!
+    let request: NSURLRequest = NSURLRequest(URL: url)
+    URLConnection.sharedInstance.asyncConnectionWithRequest(request, completion: { (data, response) -> Void in
       let responseString = NSString(data: data, encoding: NSUTF8StringEncoding) as! String
-      //println(responseString)
+      //print(responseString)
       
       var range = responseString.rangeOfString("<!DOCTYPE html>")
       if responseString.rangeOfString("<!DOCTYPE html>") != nil {
         let s = responseString.substringWithRange(Range<String.Index>(start: responseString.startIndex, end: advance(range!.startIndex, -2)))
-        //println(s)
+        //print(s)
         
         let d = (s as NSString).dataUsingEncoding(NSUTF8StringEncoding)
         let json = JSON(data: d!)
         
-        for (index: String, subJson: JSON) in json["MRT"] {
-          var p = Platform()
+        for (index, subJson): (String, JSON) in json["MRT"] {
+          let p = Platform()
           if let arrival = subJson["arrival"].string {
             p.arrivalTime = arrival
           }
@@ -95,15 +95,15 @@ class DepartureManager {
             p.destination = name
           }
           
-          if station.code.toInt() < 200 {
+          if Int(station.code) < 200 {
             if station.redLine.count > 1 {
-              station.redLine[index.toInt()!] = p
+              station.redLine[Int(index)!] = p
             } else {
               station.redLine.append(p)
             }
-          } else if station.code.toInt() < 999 {
+          } else if Int(station.code) < 999 {
             if station.orangeLine.count > 1 {
-              station.orangeLine[index.toInt()!] = p
+              station.orangeLine[Int(index)!] = p
             } else {
               station.orangeLine.append(p)
             }
@@ -111,13 +111,13 @@ class DepartureManager {
             switch index {
             case "0", "1" :
               if station.orangeLine.count > 1 {
-                station.orangeLine[index.toInt()!] = p
+                station.orangeLine[Int(index)!] = p
               } else {
                 station.orangeLine.append(p)
               }
             case "2", "3" :
               if station.redLine.count > 1 {
-                station.redLine[index.toInt()! - 2] = p
+                station.redLine[Int(index)! - 2] = p
               } else {
                 station.redLine.append(p)
               }
@@ -131,7 +131,7 @@ class DepartureManager {
         block()
       }
     }) { (error) -> Void in
-      println(error)
+      print(error)
         
       if let block = errorBlock {
         block(error: error)
@@ -159,7 +159,7 @@ class DepartureManager {
         }
       }
     }) { (error) -> Void in
-      println(error)
+      print(error)
       if let block = self._errorBlock {
         block(error: error)
       }

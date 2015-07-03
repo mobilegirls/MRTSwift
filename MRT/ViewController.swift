@@ -9,11 +9,30 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
-    NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: Selector("routineSyncDepartureTime"), userInfo: nil, repeats: true)
+    
+    DepartureManager.sharedInstance.syncStationData(completionBlock: { () -> Void in
+      DepartureManager.sharedInstance.syncMRTDepartureTime(completionBlock: { () -> Void in
+        print("==========")
+        for var i = 0; i < DepartureManager.sharedInstance.stations.count; ++i {
+          let st = DepartureManager.sharedInstance.stations[i]
+          print("\(st.cname) \(st.code)")
+          
+          for p:Platform in st.redLine {
+            print("\(p.destination) \(p.arrivalTime) \(p.nextArrivalTime)")
+          }
+          
+          for p:Platform in st.orangeLine {
+            print("\(p.destination) \(p.arrivalTime) \(p.nextArrivalTime)")
+          }
+          print("==========")
+        }
+        }, errorBlock: nil)
+      }, errorBlock: nil)
+    
+    NSTimer.scheduledTimerWithTimeInterval(20.0, target: self, selector: Selector("routineSyncDepartureTime"), userInfo: nil, repeats: true)
   }
 
   override func didReceiveMemoryWarning() {
@@ -24,19 +43,19 @@ class ViewController: UIViewController {
   // MARK: - private
   func routineSyncDepartureTime() {
     DepartureManager.sharedInstance.syncMRTDepartureTime(completionBlock: { () -> Void in
-      println("==========")
+      print("==========")
       for var i = 0; i < DepartureManager.sharedInstance.stations.count; ++i {
-        var st = DepartureManager.sharedInstance.stations[i]
-        println("\(st.cname) \(st.code)")
+        let st = DepartureManager.sharedInstance.stations[i]
+        print("\(st.cname) \(st.code)")
         
         for p:Platform in st.redLine {
-          println("\(p.destination) \(p.arrivalTime) \(p.nextArrivalTime)")
+          print("\(p.destination) \(p.arrivalTime) \(p.nextArrivalTime)")
         }
         
         for p:Platform in st.orangeLine {
-          println("\(p.destination) \(p.arrivalTime) \(p.nextArrivalTime)")
+          print("\(p.destination) \(p.arrivalTime) \(p.nextArrivalTime)")
         }
-        println("==========")
+        print("==========")
       }
     }, errorBlock: nil)
   }
