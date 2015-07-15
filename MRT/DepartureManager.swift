@@ -50,7 +50,9 @@ class DepartureManager {
           st.code = code
         }
         
-        self.stations.append(st)
+        if st.mrtId != "9" && st.mrtId != "28" {
+          self.stations.append(st)
+        }
       }
       
       if let block = completion {
